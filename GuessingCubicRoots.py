@@ -1,6 +1,7 @@
 from random import *
 
-MAX_TENTATIVAS = int(3)
+MAX_TENTATIVAS = 3
+
 def cubic(x):
 
 	print('X^3 = {}.'.format(x**3), end='\t')
@@ -11,10 +12,30 @@ def cubic(x):
 if __name__ == '__main__':
 	
 	i = MAX_TENTATIVAS
-	
-	while (i>0):
-		x = randint(1,100)	
+	rightAnswers = 0
+	score = 0
+	while (True):
+		if i == MAX_TENTATIVAS: 
+			x = randint(1,100)	
 		cube, flag, y = cubic(x)
-		print('Acertou! A raíz de {} é {}'.format(cube, x) if flag else 'Errou! A raíz de {} é {}.'.format(cube, x))
-		i = i-1 if not flag else MAX_TENTATIVAS
-		print('Tentativas Restantes: ' + i + '/' + MAX_TENTATIVAS)
+		
+		if not flag and i > 0:
+			i -= 1
+			print('Errou! Tente novamente.')
+			print('Tentativas Restantes: ' + str(i) + '/' + str(MAX_TENTATIVAS))
+			
+		elif flag:
+			print('Acertou! A raíz de {} é {}'.format(cube, x))
+			rightAnswers += 1
+			score += i
+			i = MAX_TENTATIVAS
+			print('{} respostas certas'.format(rightAnswers), end=' ')
+			print('e {} pontos.\n'.format(score))
+		
+		if i == 0:
+			print('A raíz de {} é {}.\n'.format(cube, x))
+			break
+	
+	print('Total de acertos: {} pts.'.format(rightAnswers), end='\t')
+	print('Pontuação total: {} pts.'.format(score))
+	
