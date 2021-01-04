@@ -28,8 +28,8 @@ if __name__ == '__main__':
 			if i!=0:
 				print('Tente novamente.')
 			print('Tentativas Restantes: ' + str(i) + '/' + str(MAX_TENTATIVAS) + '\n')
-			if i == 0:
-				print('\n------------- RESULTADOS -------------\n')
+			
+			
 			
 		elif flag:
 			print('Acertou! A raíz de {} é {}'.format(cube, x))
@@ -42,7 +42,7 @@ if __name__ == '__main__':
 		if i == 0:
 			print('A raíz de {} é {}.\n'.format(cube, x))
 			break
-	
+	print('\n------------- RESULTADOS -------------\n')
 	print('Total de acertos: {} pts.'.format(rightAnswers), end='\t')
 	print('Pontuação total: {} pts.'.format(score))
 	
