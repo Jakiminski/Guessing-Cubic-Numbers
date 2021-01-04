@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# NOTE: call python3, if it's not your default python env
 from random import *
 
 MAX_TENTATIVAS = 3
@@ -5,9 +9,8 @@ MAX_TENTATIVAS = 3
 def cubic(x):
 
 	print('X^3 = {}.'.format(x**3), end='\t')
-	y = int(input('Qual o valor de X inteiro?'))
+	y = int(input('Qual o valor de X inteiro?\t'))
 	return [x**3, y == x, y] 
-
 
 if __name__ == '__main__':
 	
@@ -21,8 +24,12 @@ if __name__ == '__main__':
 		
 		if not flag and i > 0:
 			i -= 1
-			print('Errou! Tente novamente.')
-			print('Tentativas Restantes: ' + str(i) + '/' + str(MAX_TENTATIVAS))
+			print('Errou!', end=' ' if i!=0 else '\n')
+			if i!=0:
+				print('Tente novamente.')
+			print('Tentativas Restantes: ' + str(i) + '/' + str(MAX_TENTATIVAS) + '\n')
+			if i == 0:
+				print('\n------------- RESULTADOS -------------\n')
 			
 		elif flag:
 			print('Acertou! A raíz de {} é {}'.format(cube, x))
